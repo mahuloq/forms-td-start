@@ -15,3 +15,13 @@
 }
 
 # This puts the data into an ngForm, you can access the value from there.
+
+# Another way to acess the data is
+
+@ViewChild("f") signupForm: NgForm;
+
+onSubmit() {
+console.log(this.signupForm);
+}
+
+# This will give you the same info, but allow you to access it before the submit button is hit
