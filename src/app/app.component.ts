@@ -8,16 +8,14 @@ import { NgForm } from "@angular/forms";
 })
 export class AppComponent {
   @ViewChild("f") signupForm: NgForm;
+  defaultQuestion = "pet";
+  answer = "";
 
-  suggestUserName() {
-    const suggestedName = "Superuser";
+  onSubmit() {
+    console.log(this.signupForm);
   }
 
   // onSubmit(form: NgForm) {
   //   console.log(form);
   // }
-
-  onSubmit() {
-    console.log(this.signupForm);
-  }
 }
