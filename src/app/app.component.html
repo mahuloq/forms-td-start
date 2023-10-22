@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <!-- <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
@@ -80,7 +80,62 @@
       <p>Mail: {{ user.email }}</p>
       <p>Secret Question: Your first {{ user.secretQuestion }}</p>
       <p>Answer:{{ user.answer }}</p>
-      <p>Gender:{{ user.gender }}</p>
+      <p>Gender:{{ user.gender }}</p> -->
+
+      <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Mail: </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            ngModel
+            required
+            email
+            class="form-control"
+            #email="ngModel"
+          />
+          <span *ngIf="!email.valid && email.touched" class="help-block"
+            >Enter a valid Email!</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="subscription">Choose a subscription</label>
+          <select
+            name="subscription"
+            id="subscription"
+            ngModel
+            class="form-control"
+          >
+            <option value="" disabled="true" selected="true">Default</option>
+            <option
+              *ngFor="let subscription of subscriptions"
+              [value]="subscription"
+            >
+              {{ subscription }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            ngModel
+            required
+            class="form-control"
+            #pass="ngModel"
+          />
+          <span *ngIf="!pass.valid && pass.touched" class="help-block"
+            >Enter a valid password!</span
+          >
+        </div>
+        <p *ngIf="!signupForm.valid && signupForm.touched">
+          The form is invalid!
+        </p>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
     </div>
   </div>
 </div>
